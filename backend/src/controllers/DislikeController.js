@@ -13,6 +13,6 @@ module.exports = {
       return res.status(400).json({ error: "Dev does not exists" });
     loggedDev.dislikes.push(targetDev._id);
     await loggedDev.save();
-    return res.json({ ok: true });
+    return res.json(loggedDev);
   }
 };
