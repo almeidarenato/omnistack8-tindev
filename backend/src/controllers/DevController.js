@@ -3,16 +3,19 @@ const Dev = require("../models/Dev");
 module.exports = {
   async index(req, res) {
     const { user } = req.headers;
-
-    const loggedUser = await Dev.findById(user);
-    const users = await Dev.find({
-      $and: [
-        { _id: { $ne: user } },
-        { _id: { $nin: loggedUser.likes } },
-        { _id: { $nin: loggedUser.dislikes } }
-      ]
-    });
-    return res.json(users);
+    try {
+      const loggedUser = await Dev.findById(user);
+      const users = await Dev.find({
+        $and: [
+          { _id: { $ne: user } },
+          { _id: { $nin: loggedUser.likes } },
+          { _id: { $nin: loggedUser.dislikes } }
+        ]
+      });
+      return res.json(users);
+    } catch (error) {
+      return res.json({ message: "Erro ao se conectar com a base de dados" });
+    }
   },
   async store(req, res) {
     const { username } = req.body;
