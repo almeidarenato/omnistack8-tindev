@@ -14,4 +14,4 @@ Foram criados serviços que consomem a api do github para buscar o profile do de
 
 Foi criada uma interface web para permitir a interação do usuário com `ReactJS` .
 O usuário pode entrar com seu usuário do github e curtir / descurtir outros usuários já cadastrados.
-Esta interface realiza chamadas para os serviços criados no backend com auxilio da biblioteca `axios`.
+Esta interface realiza chamadas com auxilio da biblioteca `axios` para os serviços criados no backend.
